@@ -1,25 +1,12 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import WebView from 'react-native-webview';
+import VimeoPlayer from '../components/VimeoPlayer';
 
 export default function WatchScreen() {
   return (
     <View style={{flex: 1}}>
-      <Text style={{height: 40, textAlign: 'center', fontSize: 24}}>
-        This is WebView
-      </Text>
-      <WebViewComp />
+      <VimeoPlayer />
     </View>
   );
 }
-
-const WebViewComp = () => {
-  return (
-    <WebView
-      source={{uri: 'https://reactnavigation.org/docs/getting-started'}}
-      onMessage={event => {
-        alert(event.nativeEvent.data);
-      }}
-    />
-  );
-};
