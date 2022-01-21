@@ -4,6 +4,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {Text, TextInput, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import {Button} from 'react-native';
+import {Input} from 'antd';
 
 export default function SurveyScreen() {
   const {
@@ -11,21 +12,17 @@ export default function SurveyScreen() {
     handleSubmit,
     formState: {errors},
   } = useForm({
-    defaultValues: {email: 'fake email', checkbox: false},
+    defaultValues: {email: ' email', checkbox: false},
   });
   const onSubmit = data => console.log(data);
   return (
     <View>
+      <Text>SurveyScreen</Text>
       <Controller
         control={control}
         rules={{required: true}}
         render={({field: {onChange, onBlur, value, ref}}) => (
-          <TextInput
-            placeholder="email"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
+          <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
         )}
         name="email"
       />
@@ -43,7 +40,6 @@ export default function SurveyScreen() {
         name="checkbox"
       />
       <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-      <Text>Test</Text>
     </View>
   );
 }
